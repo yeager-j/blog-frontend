@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let user of users | async">
+      <div class="card bg-light mb-3">
+        <div class="card-body">
+          <h4 class="card-title">{{ user.name }} <span class="badge badge-primary">{{ user.rankName }}</span></h4>
+          <p class="card-text">{{ user.email }}</p>
+
+          <hr>
+
+          <a [routerLink]="['/profile', user._id]" class="btn btn-success">Profile</a>
+          <button (click)="remove(user._id)" class="btn btn-danger" *ngIf="currentUser.rank < 2">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

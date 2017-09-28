@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>The Blog</h1>
+    </div>
+    <div class="col-md-3">
+      <a class="btn btn-primary" routerLink="new" *ngIf="auth.loggedIn()">Create Article</a>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card bg-light mb-3" *ngFor="let article of articles | async">
+        <div class="card-body">
+          <h4 class="card-title">{{ article.title }}</h4>
+          <p class="card-text">{{ article.body }}</p>
+
+          <hr>
+
+          <p class="small">By {{ article.author.name }} at {{ article.date_created | date }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-light mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Sidebar</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

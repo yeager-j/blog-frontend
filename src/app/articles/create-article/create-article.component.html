@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="alert alert-warning" *ngFor="let error of errors">
+        {{ error | capitalize}}
+      </div>
+
+      <div class="card bg-light mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Create Article</h4>
+          <p class="card-text">Post an article to the home page.</p>
+
+          <hr>
+
+          <form (ngSubmit)="submit()">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="title" [(ngModel)]="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="body">Body</label>
+              <textarea id="body" name="body" [(ngModel)]="body" class="form-control" rows="10" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
