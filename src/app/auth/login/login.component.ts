@@ -11,7 +11,7 @@ import { NavigationComponent } from '../../common/navigation/navigation.componen
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
-  error: string;
+  errors: string[];
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       }, (error) => {
         error = error.json();
-        this.error = error.message;
+        this.errors = error.errors;
       });
   }
 }

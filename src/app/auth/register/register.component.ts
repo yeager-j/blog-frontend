@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   email: string;
   password: string;
   confirm_password: string;
+  errors: string[];
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -23,10 +24,13 @@ export class RegisterComponent implements OnInit {
     this.userService.create({
       name: this.name,
       email: this.email,
-      password: this.password
+      password: this.password,
+      confirm_password: this.confirm_password
     }).subscribe(res => {
       NavigationComponent.updateLinks.next(true);
       this.router.navigate(['/home']);
+    }, errors => {
+      this.errors = errors.json().errors;
     });
   }
 }
